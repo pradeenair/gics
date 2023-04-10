@@ -33,7 +33,7 @@ if uploaded_file is not None:
                 st.write(f"- Industry Group: {industry_group}")
                 st.write(f"- Industry: {industry}")
                 st.write(f"- Sub-Industry: {sub_industry}")
-            except:
-                st.write("Error: Could not retrieve information for this company.")
+            except Exception as e:
+                st.write(f"Error: Could not retrieve information for this company. Exception: {e}")
     else:
         st.write("No company names found in the uploaded file.")
