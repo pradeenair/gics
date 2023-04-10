@@ -26,10 +26,10 @@ if uploaded_file is not None:
                 soup = BeautifulSoup(response.content, 'html.parser')
 
                 # Extract the GICS classifications from the page
-                gics_sector = soup.find_all('span', string='GICS Sector')[0].parent.next_sibling.text
-                industry_group = soup.find_all('span', string='GICS Industry Group')[0].parent.next_sibling.text
-                industry = soup.find_all('span', string='GICS Sub Industry')[0].parent.next_sibling.text
-                sub_industry = soup.find_all('span', string='Full Time Employees')[0].parent.next_sibling.text
+                gics_sector = soup.find('div', {'class': 'asset-profile-container'}).find_all('span')[1].text
+                industry_group = soup.find('div', {'class': 'asset-profile-container'}).find_all('span')[3].text
+                industry = soup.find('div', {'class': 'asset-profile-container'}).find_all('span')[5].text
+                sub_industry = soup.find('div', {'class': 'asset-profile-container'}).find_all('span')[7].text
 
                 # Display the results
                 st.write(f"- GICS Sector: {gics_sector}")
